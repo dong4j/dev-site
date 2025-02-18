@@ -1,45 +1,61 @@
 ---
-title: "About dong4j"
-description: "dong4j，13 年毕业于湖南科技大学，Laravel 爱好者；目前靠 Go 养家糊口，抽空学习 Rust，全职远程中"
-pubDate: "2019-03-26 18:00:48"
+title: "About Me"
+description: "dong4j，Graduated from Hunan University of Science and Technology in 2013, an open-source enthusiast, and an AI advocate; currently making a living with Java, and taking time to learn Golang and front-end technology."
+pubDate: "2025-02-18"
 category: "life"
-banner: "@images/banners/_1554874559_RUE1L2EnwC.png"
+banner: "@images/banners/about.webp"
 tags: ["life"]
 oldViewCount: 8084
-oldKeywords: ["Godruoyi,二愣的闲谈杂鱼"]
+oldKeywords: ["dong4j,dark room"]
 ---
 
-Godruoyi，15 年毕业于西南大学计算机专业，Laravel 爱好者；目前靠 Go 养家糊口，抽空学习 Rust，全职远程中。由于看起来像二愣，说起话来也像二愣，朋友们都叫我二愣。
+dong4j, graduated from Southwest University with a major in Computer Science in 2013, is an open-source enthusiast and an AI embracer. 
 
-喜欢捣鼓各种工具，但效率也不高；喜欢买书，一定是纸质书籍，爱看小文学，伪文艺青年，你也可以查看 [我的阅读清单](https://godruoyi.com/posts/my-books)；性格有点内向，喜欢写写写写，虽然文笔也不好，有时候也爱 [发发闹骚](https://godruoyi.com/categories/life)，欢迎大家关注我的 GitHub [https://github.com/godruoyi](https://github.com/godruoyi)。
+Currently, makes a living with Java, while finding time to learn Golang and front-end technologies. Interestingly, "dong4j" is a homophone of my Chinese name, and "4j" sounds like "司机", so my friends affectionately call me **司机** (Driver).
 
-如果你想了解我更多的信息，这里有一些我觉得写得还不错的文章，http://godruoyi.com/posts#selected-articel 。
+I enjoy tinkering with various tools and open-source projects and have a HomeLab. Feel free to follow me on GitHub [https://github.com/dong4j](https://github.com/dong4j).
 
-> 注：我使用 Bear 写每一篇博客，所有的博客内容均没有 AI 参与。
+If you're interested in learning more about me, here are some articles I think are pretty good: https://dong4j.dev/posts#selected-articel.
+
+## Tinkering & Other Stuff
+
+## About This Blog
+
+From VuePress to Hugo, and now using Astro, every blog migration has been a journey of refinement, during which many documents were lost.
+
+This time, I aim to rebuild my blog with Astro, focusing on technology, unlike [司机带你开车](https://blog.dong4j.site), which is dedicated to non-technical topics such as life, travel, and random tinkering.
+
+Of course, [司机带你开车](https://blog.dong4j.site) will continue to be active, serving as a platform for non-technical content.
+
+## Contact Me
+
+Lately, I've been active on [Twitter](https://twitter.com/dong4j). You can also reach me through the following channels:
+
+- Email: dong4j@gmail.com
+- WechatID: dong4j666
+
+<!--
+dong4j，13 年毕业于西南大学计算机专业，开源爱好者, AI 拥抱者；目前靠 Java 养家糊口，抽空学习 Golang 和前端技术。dong4j 刚好是我中文名称的谐音, 4j 又跟 `司机` 谐音, 所以朋友都叫我 **司机**.
+
+喜欢捣鼓各种工具和开源项目，有一个 HomeLab, 欢迎大家关注我的 GitHub [https://github.com/dong4j](https://github.com/dong4j)。
+
+如果你想了解我更多的信息，这里有一些我觉得写得还不错的文章，https://dong4j.dev/posts#selected-articel 。
 
 ## 折腾 & 其他
 
-*  [🧚🏾 The Best Image OCR SDK For BAT](https://github.com/godruoyi/ocr)  集成腾讯、阿里、百度的文字识别 SDK
-*  [📦 一个简单的依赖注入容器（from Laravel Container）](https://github.com/godruoyi/easy-container)
-*  [🍡 Laravel tips in terminal](https://github.com/godruoyi/laravel-tips)
-*  [🥑 Laravel Tips In Raycast](https://github.com/godruoyi/laravel-tips-raycast)
-*  [❄️ 雪花算法的 PHP 实现](https://godruoyi.com/posts/php-id-generator-based-on-snowflake-algorithm)
-*  [🌨️ 雪花算法的 Golang 实现](https://godruoyi.com/posts/golang-snowflake)
-*  [🌰 Wakeup](https://github.com/godruoyi/wakeup) Use AI to create admirable images to surprise your every morning
-*  [📰 RESTful API 设计规范](https://godruoyi.com/posts/the-resetful-api-design-specification)
-*  [🐶 Readog is a browser extension that can save your links to any platform](https://github.com/godruoyi/readog)
-*  [🎈 An beautiful blog built with Astro](https://github.com/godruoyi/gblog)
 
 ## 关于这个博客
 
-六年前我将我的博客迁移到 Laravel & Vue 平台，更早的博客文章在迁移过程中丢失，你可以从这里看到[这里](https://godruoyi.com/posts/the-about-gblog/)当时的记录。 最近我又将博客迁移到 Astro 平台(见[Blog 的延续](https://godruoyi.com/posts/blog-3/))，评论数据又丢了，好在是博客内容现在已经全部托管到 GitHub，这次该是丢不了了。
+从 VuePress, Hugo 到 Hexo, 现在使用 Astro，每一次博客迁移都是一次金华, 期间丢失了很多文档.
 
-如果你喜欢这个博客，你可以参考 [这个仓库](https://github.com/godruoyi/gblog) 一键部署一个你自己的。
+这次我想借助 Astro 来重新搭建博客，和 [司机带你开车](https://blog.dong4j.site) 不同的是, 这个站点专注于技术, 不搞花里胡哨, 回归简洁于纯真的初衷.
+
+当然 [司机带你开车](https://blog.dong4j.site) 还会继续使用, 它的侧重点就是非技术类的, 比如生活, 旅行, 瞎折腾等等.
 
 ## 联系我
 
-最近经常在[刷推](https://twitter.com/godruoyi)，你也可以在下面的网站或联系方式中找到我。
+最近经常在[刷推](https://twitter.com/dong4j)，你也可以在下面的网站或联系方式中找到我。
 
-* [Laravel China](https://learnku.com/users/5359)
-* Email: godruoyi@gmail.com
-* WechatID: Youji_
+* Email: dong4j@gmail.com
+* WechatID: dong4j666
+-->

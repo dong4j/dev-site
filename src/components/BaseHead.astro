@@ -31,7 +31,7 @@ if (!ogImage) {
 }
 
 const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
-const appleTouchIcon = await getImage({ src: faviconSrc, width: 180, height: 180, format: 'png' })
+const appleTouchIcon = await getImage({ src: faviconSrc, width: 180, height: 180, format: 'webp' })
 const socialImageRes = await getImage({ src: ogImage, width: 1200, height: 600 })
 
 let socialImage = socialImageRes.src
