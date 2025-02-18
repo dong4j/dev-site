@@ -2,12 +2,14 @@
 import { Settings } from '@/config'
 
 const ID = Settings?.UmamiAnalytics?.dataWebsiteID
+const JS_SRC = Settings?.UmamiAnalytics?.jsSrc
+const HOST = Settings?.UmamiAnalytics?.host
 const enable = Settings?.UmamiAnalytics?.enable
 ---
 
 {
     enable && (
-        <script defer src="https://cloud.umami.is/script.js" data-website-id=`${ID}`></script>
+        <script defer src=`${JS_SRC}` data-website-id=`${ID}` data-host-url=`${HOST}`></script>
     )
 }
 

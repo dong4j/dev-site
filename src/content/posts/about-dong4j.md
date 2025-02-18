@@ -3,38 +3,12 @@ title: "About Me"
 description: "dong4j，Graduated from Hunan University of Science and Technology in 2013, an open-source enthusiast, and an AI advocate; currently making a living with Java, and taking time to learn Golang and front-end technology."
 pubDate: "2025-02-18"
 category: "life"
-banner: "@images/banners/about.webp"
+banner: "@images/banners/about2.webp"
 tags: ["life"]
 oldViewCount: 8084
 oldKeywords: ["dong4j,dark room"]
 ---
 
-dong4j, graduated from Southwest University with a major in Computer Science in 2013, is an open-source enthusiast and an AI embracer. 
-
-Currently, makes a living with Java, while finding time to learn Golang and front-end technologies. Interestingly, "dong4j" is a homophone of my Chinese name, and "4j" sounds like "司机", so my friends affectionately call me **司机** (Driver).
-
-I enjoy tinkering with various tools and open-source projects and have a HomeLab. Feel free to follow me on GitHub [https://github.com/dong4j](https://github.com/dong4j).
-
-If you're interested in learning more about me, here are some articles I think are pretty good: https://dong4j.dev/posts#selected-articel.
-
-## Tinkering & Other Stuff
-
-## About This Blog
-
-From VuePress to Hugo, and now using Astro, every blog migration has been a journey of refinement, during which many documents were lost.
-
-This time, I aim to rebuild my blog with Astro, focusing on technology, unlike [司机带你开车](https://blog.dong4j.site), which is dedicated to non-technical topics such as life, travel, and random tinkering.
-
-Of course, [司机带你开车](https://blog.dong4j.site) will continue to be active, serving as a platform for non-technical content.
-
-## Contact Me
-
-Lately, I've been active on [Twitter](https://twitter.com/dong4j). You can also reach me through the following channels:
-
-- Email: dong4j@gmail.com
-- WechatID: dong4j666
-
-<!--
 dong4j，13 年毕业于西南大学计算机专业，开源爱好者, AI 拥抱者；目前靠 Java 养家糊口，抽空学习 Golang 和前端技术。dong4j 刚好是我中文名称的谐音, 4j 又跟 `司机` 谐音, 所以朋友都叫我 **司机**.
 
 喜欢捣鼓各种工具和开源项目，有一个 HomeLab, 欢迎大家关注我的 GitHub [https://github.com/dong4j](https://github.com/dong4j)。
@@ -58,4 +32,4 @@ dong4j，13 年毕业于西南大学计算机专业，开源爱好者, AI 拥抱
 
 * Email: dong4j@gmail.com
 * WechatID: dong4j666
--->
+

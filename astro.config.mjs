@@ -34,7 +34,9 @@ export default defineConfig({
     },
     integrations: [
         partytown(),
-        mdx(),
+        mdx({
+            extendMarkdownConfig: true,
+        }),
         sitemap(),
         tailwind(),
         react(),

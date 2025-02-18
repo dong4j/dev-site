@@ -4,8 +4,8 @@ const posts = defineCollection({
     type: 'content',
     schema: ({ image }) => z.object({
         title: z.string(),
-        description: z.string(),
-        banner: image().or(z.string()),
+        description: z.string().optional(),
+        banner: image().or(z.string()).optional(),
 
         // This banner will be shown in blog lists(/posts) if provided.
         banner2: image().or(z.string()).optional(),
@@ -13,8 +13,8 @@ const posts = defineCollection({
         // The article OG cover, if not provided, use summary card, otherwise summary_large_image
         ogImage: image().or(z.string()).optional(),
 
-        category: z.string(),
-        pubDate: z.coerce.date(),
+        category: z.string().optional(),
+        pubDate: z.coerce.date().optional(),
 
         // Should the article be added to SELECTED POSTS? will be displayed on the /posts page if true.
         selected: z.boolean().optional(),

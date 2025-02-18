@@ -14,6 +14,7 @@ export const NavigationLinks: NavigationLink[] = [
     { name: 'Timeline', url: '/timeline' },
     { name: 'About', url: '/posts/about-dong4j' },
     { name: 'Friends', url: '/friends' },
+    { name: 'Other Site', url: 'https://blog.dong4j.site/' },
 ]
 
 export const FooterLinks = [
@@ -43,10 +44,11 @@ export const Settings = {
     },
 
     // See https://github.com/umami-software/umami
-    // todo 使用自建服务
     UmamiAnalytics: {
-        enable: false,
-        dataWebsiteID: 'bf63658a-9418-4f39-a6a1-5a0cedb6e429',
+        enable: !!(import.meta.env.UMAMI_ENABLE) || !!process.env.UMAMI_ENABLE,
+        dataWebsiteID: (process.env.UMAMI_ID ?? import.meta.env.UMAMI_ID) as string,
+        jsSrc: (process.env.UMAMI_SRC ?? import.meta.env.UMAMI_SRC) as string,
+        host: (process.env.UMAMI_HOST ?? import.meta.env.UMAMI_HOST) as string,
     },
 
     Comment: {
@@ -71,7 +73,7 @@ export const Settings = {
         config: {
             // 请参阅 https://github.com/syhily/astro-uploader 了解如何配置上传器。以下配置会将编译后的 `assets` 文件夹上传到 S3 或 R2。
             // 可以为其设置一个单独的域名，以便使用 CDN 域名访问所有资源。
-            // 例如：https://images.dong4j.com/gblog/assets/brand-logo.webp 注意，如果您想自动将所有图片/js/css 替换为 CDN 链接，可能还需要在 `astro.config.mjs` 中修改 `build.assetsPrefix`。
+            // 例如：https://images.dong4j.com/gblog/blog/brand-logo.webp 注意，如果您想自动将所有图片/js/css 替换为 CDN 链接，可能还需要在 `astro.config.mjs` 中修改 `build.assetsPrefix`。
             paths: ['assets'],
             endpoint: (process.env.S3_ENDPOINT ?? import.meta.env.S3_ENDPOINT) as string,
             bucket: (process.env.S3_BUCKET ?? import.meta.env.S3_BUCKET) as string,

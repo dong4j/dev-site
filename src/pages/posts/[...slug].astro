@@ -31,21 +31,21 @@ const ogImage = post.data.ogImage
 
 <BaseLayout
     title={post.data.title}
-    description={post.data.description}
+    description={post.data.description ?? ''}
     ogImage={ogImage}
     structuredData={{
         '@context': 'https://schema.org',
         '@type': 'NewsArticle',
         '@id': URL,
         'url': URL,
-        'description': post.data.description,
+        'description': post.data.description ?? '',
         'image': [
             // post.data.banner,
 
         ],
         'headline': post.data.title,
-        'datePublished': post.data.pubDate,
-        'dateModified': post.data.pubDate,
+        'datePublished': post.data.pubDate ?? new Date(),
+        'dateModified': post.data.pubDate ?? new Date(),
         'author': [{
             '@type': 'Person',
             'name': SITE.author,
@@ -91,7 +91,7 @@ const ogImage = post.data.ogImage
                                 </svg>
                             </li>
                             <li class="inline-flex items-center text-sm text-neutral-500 hover:text-neutral-600 focus:outline-none focus:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-400 dark:focus:text-neutral-400">
-                                {formatDateTime(post.data.pubDate)}
+                                {formatDateTime(post.data.pubDate ?? new Date())}
                                 <svg
                                     class="flex-shrink-0 size-5 text-neutral-500 dark:text-neutral-600 mx-2"
                                     width="16"
