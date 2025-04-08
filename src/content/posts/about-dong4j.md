@@ -1,6 +1,6 @@
 ---
 title: "About Me"
-description: "dong4j，13 年毕业于西南大学计算机专业，开源爱好者, AI 拥抱者；目前靠 Java 养家糊口，抽空学习 Golang 和前端技术"
+description: "dong4j，13 年毕业于湖南科技大学，开源爱好者, AI 拥抱者；目前靠 Java 养家糊口，抽空学习 Golang 和前端技术"
 pubDate: "2025-02-18"
 category: "life"
 banner: "@images/banners/about2.webp"
@@ -9,7 +9,7 @@ oldViewCount: 8084
 oldKeywords: ["dong4j,dark room"]
 ---
 
-dong4j，13 年毕业于西南大学计算机专业，开源爱好者, AI 拥抱者；目前靠 Java 养家糊口，抽空学习 Golang 和前端技术。dong4j 刚好是我中文名称的谐音, 4j 又跟 `司机` 谐音, 所以朋友都叫我 **司机**.
+dong4j，13 年毕业于湖南科技大学，开源爱好者, AI 拥抱者；目前靠 Java 养家糊口，抽空学习 Golang 和前端技术。dong4j 刚好是我中文名称的谐音, 4j 又跟 `司机` 谐音, 所以朋友都叫我 **司机**.
 
 喜欢捣鼓各种工具和开源项目，有一个 HomeLab, 欢迎大家关注我的 GitHub [https://github.com/dong4j](https://github.com/dong4j)。
 
