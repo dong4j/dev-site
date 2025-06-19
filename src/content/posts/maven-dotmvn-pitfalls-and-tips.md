@@ -10,7 +10,7 @@ toc: true
 
 ## 📖 简介 
 
-在上一篇 [Maven Profiles 的使用场景案例分享]() 我们通过 Profiles 的实际案例大致了解了它的使用方式, 并详细梳理了 Profiles 的优先级, 不过也挖了一个坑: 为啥我要将 `settings.xml` 和项目代码放在一起?
+在上一篇 [Maven Profiles 的使用场景案例分享](./maven-profiles-use-cases) 我们通过 Profiles 的实际案例大致了解了它的使用方式, 并详细梳理了 Profiles 的优先级, 不过也挖了一个坑: 为啥我要将 `settings.xml` 和项目代码放在一起?
 
 比如 [arco-supreme](https://github.com/zeka-stack/arco-supreme) 项目的代码结构为:
 

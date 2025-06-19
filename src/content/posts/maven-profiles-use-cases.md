@@ -89,7 +89,7 @@ toc: true
 
 ![large](./maven-profiles-use-cases/assets/large-8964629.jpg)
 
-既然使用了环境变量来保证安全性, 我肯定是将 `settings.xml` 放在了项目中, 至于为什么这样做, 我想在 [你可能忽略的 .mvn：Maven 本地化配置的秘密与坑点解析]() 一文中分享我的想法.
+既然使用了环境变量来保证安全性, 我肯定是将 `settings.xml` 放在了项目中, 至于为什么这样做, 我想在 [你可能忽略的 .mvn：Maven 本地化配置的秘密与坑点解析](./maven-dotmvn-pitfalls-and-tips) 一文中分享我的想法.
 
 ---
 
