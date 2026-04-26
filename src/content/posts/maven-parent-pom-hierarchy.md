@@ -1,6 +1,6 @@
 ---
 title: "🧩 如何用多层 parent 管理 Maven 项目依赖"
-description: "🧩 如何用多层 parent 管理 Maven 项目依赖"
+description: "介绍 Zeka.Stack 项目中基于多层 parent 的 Maven 项目依赖管理架构，通过分层设计实现依赖版本统一管理、构建配置差异化和项目结构清晰化，解决了大型项目中常见的依赖冲突、版本不一致等问题。"
 pubDate: "2025-06-06"
 category: "zeka-stack"
 banner: "./maven-parent-pom-hierarchy/cover.webp"

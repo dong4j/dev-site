@@ -168,7 +168,7 @@ Zeka.Stack 不仅是个脚手架，它是一套开发体系，一整套从零到
 
 **Q1：Zeka.Stack 是否开源？**
 
-暂未开源，但将来会择机发布部分组件。
+就是奔着开源去的: [Zeka.Stack](https://github.com/zeka-stack)。
 
 **Q2：Zeka.Stack 可以用于哪些场景？**
 

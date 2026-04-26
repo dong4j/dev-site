@@ -1,6 +1,6 @@
 ---
 title: "🧪 Maven Profiles 的使用场景案例分享"
-description: "Maven 的 Profiles 配置, 目标是让 Zeka.Stack 相关的组件既能上传到 Maven 公共仓库, 也能让大家在进行二次开发后, 只上传到公司 Maven 私服."
+description: "通过实际案例介绍了Maven Profiles的使用场景和配置方法，重点讲解了如何通过Profiles实现多环境部署切换和依赖管理，并详细分析了Profiles的激活优先级和隐式激活规则。"
 pubDate: "2025-06-04"
 category: "zeka-stack"
 banner: "./maven-profiles-use-cases/cover.webp"

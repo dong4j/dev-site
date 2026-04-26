@@ -1,6 +1,6 @@
 ---
 title: "🚀 从注册到发布：Maven 中央仓库上传 jar 实践"
-description: "虽然 Zeka.Stack 是全开源的, 但是每个组件也可以单独使用, 为了避免需要克隆所有项目然后本地 install 才能使用, 所以最简单的方式就是将 Zeka.Stack 的组件上传到 Maven 公共仓库, 所有就有这篇水文."
+description: "介绍如何将 Zeka.Stack 组件上传到 Maven 中央仓库的完整流程，包括 Sonatype 账户注册、DNS 验证、GPG 签名配置、pom.xml 配置和发布步骤，并分享了发布过程中遇到的常见问题和解决方案。"
 pubDate: "2025-06-03"
 category: "zeka-stack"
 banner: "./maven-central-publishing-practice/cover.webp"

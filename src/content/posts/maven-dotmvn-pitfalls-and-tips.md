@@ -1,6 +1,6 @@
 ---
 title: "🧨 你可能忽略的 .mvn：Maven 本地化配置的秘密与坑点解析"
-description: "🧨 你可能忽略的 .mvn：Maven 本地化配置的秘密与坑点解析"
+description: "深入解析 Maven .mvn 目录的作用和优势，介绍了如何通过项目级配置实现构建环境的一致性，并分享了 Zeka.Stack 项目中将 settings.xml 纳入版本控制以提升开发体验的实践经验。"
 pubDate: "2025-06-05"
 category: "zeka-stack"
 banner: "./maven-dotmvn-pitfalls-and-tips/cover.webp"
