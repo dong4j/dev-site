@@ -5,9 +5,12 @@ import Theme from '@components/ui/logos/Theme.astro'
 import { NavigationLinks } from '@/config'
 ---
 
-<header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start xl:top-6">
+<header
+    data-site-header
+    class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm transition-transform duration-300 ease-out md:flex-nowrap md:justify-start xl:top-6"
+>
     <nav
-        class="relative mx-2 w-full rounded-[36px] border border-neutral-100 bg-neutral-100 px-4 py-3 backdrop-blur-md dark:border-neutral-700/40 dark:bg-neutral-800/80 dark:backdrop-blur-md md:flex md:items-center md:justify-between md:px-6 lg:px-8 xl:mx-auto"
+        class="relative mx-2 w-full rounded-[36px] border border-neutral-100/70 bg-neutral-100/80 px-4 py-3 backdrop-blur-md dark:border-neutral-700/40 dark:bg-neutral-800/80 dark:backdrop-blur-md md:flex md:items-center md:justify-between md:px-6 lg:px-8 xl:mx-auto"
         aria-label="Global"
     >
         <div class="flex items-center justify-between ">
@@ -213,5 +216,53 @@ window.addEventListener('load', () => {
         })
     })
 })
+
+const setupAutoHideHeader = () => {
+    if (window.__siteHeaderAutoHideController) {
+        window.__siteHeaderAutoHideController.abort()
+    }
+
+    const header = document.querySelector('[data-site-header]')
+    if (!header) {
+        return
+    }
+
+    header.classList.remove('-translate-y-[140%]', 'pointer-events-none')
+
+    if (!document.querySelector('article.prose')) {
+        return
+    }
+
+    const controller = new AbortController()
+    window.__siteHeaderAutoHideController = controller
+    let lastScrollY = window.scrollY
+
+    const isMenuOpen = () => {
+        const menu = document.querySelector('#navbar-collapse-with-animation')
+        return menu?.classList.contains('open') || menu?.classList.contains('hs-collapse-open')
+    }
+
+    const syncHeader = () => {
+        const currentScrollY = window.scrollY
+        const shouldHide = currentScrollY > 160 && currentScrollY > lastScrollY && !isMenuOpen()
+
+        header.classList.toggle('-translate-y-[140%]', shouldHide)
+        header.classList.toggle('pointer-events-none', shouldHide)
+        lastScrollY = Math.max(currentScrollY, 0)
+    }
+
+    window.addEventListener('scroll', syncHeader, { passive: true, signal: controller.signal })
+    window.addEventListener('resize', syncHeader, { passive: true, signal: controller.signal })
+    syncHeader()
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupAutoHideHeader)
+}
+else {
+    setupAutoHideHeader()
+}
+window.addEventListener('load', setupAutoHideHeader)
+document.addEventListener('astro:page-load', setupAutoHideHeader)
 </script>
 <script is:inline src="/vendor/preline/collapse2.1.0.min.js"></script>
