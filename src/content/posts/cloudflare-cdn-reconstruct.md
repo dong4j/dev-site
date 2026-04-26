@@ -3,7 +3,7 @@ title: "把家里所有公网服务塞进 Cloudflare CDN：一条泛域名规则
 description: "用一条泛域名 DNS + 一条 Origin Rules 规则把 `*.dong4j.dev` 全部塞进 Cloudflare CDN，顺便解决雷池 WAF 和多吉云的跨域问题。"
 pubDate: "2025-02-14"
 category: "homelab"
-banner: "https://api.dong4j.site/cover/png/v7?title=%E6%8A%8A%E5%AE%B6%E9%87%8C%E6%89%80%E6%9C%89%E5%85%AC%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%A1%9E%E8%BF%9B+Cloudflare+CDN%EF%BC%9A%E4%B8%80%E6%9D%A1%E6%B3%9B%E5%9F%9F%E5%90%8D%E8%A7%84%E5%88%99%E6%90%9E%E5%AE%9A%E9%9A%90%E8%97%8F%E7%9C%9F%E5%AE%9E+IP&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
+banner: "./cloudflare-cdn-reconstruct/cover.webp"
 tags:
   - "Homelab"
   - "自动化运维"

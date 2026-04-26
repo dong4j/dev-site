@@ -3,7 +3,7 @@ title: "服务器开机后在 tty1 自动显示 btop：一块小屏幕救一根 
 description: "给家里服务器挂了一块小屏幕当监控仪表盘，配合 systemd 让开机就自动在 tty1 跑 btop，不用再接键盘登录。"
 pubDate: "2026-02-01"
 category: "homelab"
-banner: "https://api.dong4j.site/cover/png/v2?title=%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E6%9C%BA%E5%90%8E%E5%9C%A8+tty1+%E8%87%AA%E5%8A%A8%E6%98%BE%E7%A4%BA+btop%EF%BC%9A%E4%B8%80%E5%9D%97%E5%B0%8F%E5%B1%8F%E5%B9%95%E6%95%91%E4%B8%80%E6%A0%B9+HDMI+%E7%BA%BF%E7%9A%84%E6%95%85%E4%BA%8B&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
+banner: "./server-btop-tty1-autostart/cover.webp"
 tags:
   - "Homelab"
   - "自动化运维"

@@ -3,7 +3,7 @@ title: "使用本地 SSH Key 登录 GCP Compute Engine 实例"
 description: "机场线路不稳定又担心 IP 污染风险时，我在 GCP 自建节点前先打通了本地 SSH Key 登录 Compute Engine 的完整流程。"
 pubDate: "2026-04-25"
 category: "infra"
-banner: "https://api.dong4j.site/cover/png/v7?title=%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0+SSH+Key+%E7%99%BB%E5%BD%95+GCP+Compute+Engine+%E5%AE%9E%E4%BE%8B&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
+banner: "./gcp-compute-engine-os-login-ssh-key/cover.webp"
 tags:
   - "自动化运维"
   - "最佳实践"

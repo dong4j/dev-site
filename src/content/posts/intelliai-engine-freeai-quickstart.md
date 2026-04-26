@@ -3,7 +3,7 @@ title: "被内存条逼出来的 Homelab：3 台 Mac 撑起 IntelliAI Engine 的
 description: "记录怎么把家里三台闲着的 Mac 拼成 IntelliAI Engine 背后的免费大模型服务，以及用户如何四步接入 FreeAI。"
 pubDate: "2026-04-18"
 category: "zeka-stack"
-banner: "https://api.dong4j.site/cover/png/v2?title=%E8%A2%AB%E5%86%85%E5%AD%98%E6%9D%A1%E9%80%BC%E5%87%BA%E6%9D%A5%E7%9A%84+Homelab%EF%BC%9A3+%E5%8F%B0+Mac+%E6%92%91%E8%B5%B7+IntelliAI+Engine+%E7%9A%84%E5%85%8D%E8%B4%B9%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%8D%E5%8A%A1&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
+banner: "./intelliai-engine-freeai-quickstart/cover.webp"
 tags:
   - "Homelab"
   - "架构设计"

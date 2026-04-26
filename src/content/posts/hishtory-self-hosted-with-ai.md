@@ -3,7 +3,7 @@ title: "家里十几台服务器的命令历史，被我塞进了一个 hishtory
 description: "用自建 hishtory server 把家里所有机器的 shell 历史汇总到一个地方查询，顺便把 AI 补全接到自建的 OneAPI 网关上。"
 pubDate: "2026-02-11"
 category: "productivity"
-banner: "https://api.dong4j.site/cover/png/v7?title=%E5%AE%B6%E9%87%8C%E5%8D%81%E5%87%A0%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E5%8E%86%E5%8F%B2%EF%BC%8C%E8%A2%AB%E6%88%91%E5%A1%9E%E8%BF%9B%E4%BA%86%E4%B8%80%E4%B8%AA+hishtory%EF%BC%9A%E9%A1%BA%E4%BE%BF%E6%8E%A5%E4%B8%8A%E8%87%AA%E5%BB%BA+AI+%E7%BD%91%E5%85%B3&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
+banner: "./hishtory-self-hosted-with-ai/cover.webp"
 tags:
   - "Homelab"
   - "效率工具与工作流"

@@ -3,7 +3,7 @@ title: "受够了手动配 Samba：一个脚本搞定家里所有 Linux / OpenWr
 description: "一套我自己用了很久的 Samba 一键脚本，把 Linux / OpenWrt 上那些装包、改配置、开防火墙、搞网络发现的活儿全包了。"
 pubDate: "2026-01-16"
 category: "homelab"
-banner: "https://api.dong4j.site/cover/png/v2?title=%E5%8F%97%E5%A4%9F%E4%BA%86%E6%89%8B%E5%8A%A8%E9%85%8D+Samba%EF%BC%9A%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC%E6%90%9E%E5%AE%9A%E5%AE%B6%E9%87%8C%E6%89%80%E6%9C%89+Linux+%2F+OpenWrt+%E7%9A%84%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
+banner: "./fuck-samba-service/cover.webp"
 tags:
   - "Homelab"
   - "自动化运维"

@@ -3,7 +3,7 @@ title: "PVE 万兆网卡只跑 1G？一次 ARP Flux 的完整排查记录"
 description: "PVE 上万兆网卡协商 10G 却只跑 1G？不是硬件问题，是同网段多接口引发的 ARP Flux。"
 pubDate: "2026-02-18"
 category: "infra"
-banner: "https://api.dong4j.site/cover/png/v7?title=PVE+%E4%B8%87%E5%85%86%E7%BD%91%E5%8D%A1%E5%8F%AA%E8%B7%91+1G%EF%BC%9F%E4%B8%80%E6%AC%A1+ARP+Flux+%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
+banner: "./pve-10g-arp-flux-debug/cover.webp"
 tags:
   - "Homelab"
   - "踩坑记录"
