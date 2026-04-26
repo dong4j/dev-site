@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogComments from '@components/blog/BlogComments'
+import BlogImageLightbox from '@components/blog/BlogImageLightbox.astro'
 import BlogTOC from '@components/blog/BlogTOC.astro'
 import Image from '@components/ui/images/Image.astro'
 import { formatDateTime } from '@support/time'
@@ -164,4 +165,5 @@ const ogImage = post.data.ogImage
             background-color: var(--shiki-dark-bg) !important;
         }
     </style>
+    <BlogImageLightbox />
 </BaseLayout>
