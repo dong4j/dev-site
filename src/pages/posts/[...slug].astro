@@ -4,6 +4,7 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogComments from '@components/blog/BlogComments'
 import BlogImageLightbox from '@components/blog/BlogImageLightbox.astro'
 import BlogTOC from '@components/blog/BlogTOC.astro'
+import BackTop from '@components/ui/buttons/BackTop.astro'
 import Image from '@components/ui/images/Image.astro'
 import { formatDateTime } from '@support/time'
 import { SITE, Settings } from '@/config'
@@ -166,4 +167,5 @@ const ogImage = post.data.ogImage
         }
     </style>
     <BlogImageLightbox />
+    <BackTop />
 </BaseLayout>

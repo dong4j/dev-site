@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogTimeline from '@components/blog/BlogTimeline.astro'
+import BackTop from '@components/ui/buttons/BackTop.astro'
 import { SITE } from '@/config'
 
 const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
@@ -40,4 +41,5 @@ const URL = Astro.url.href
         </div>
         {posts.map(p => <BlogTimeline blog={p} />)}
     </section>
+    <BackTop />
 </BaseLayout>
