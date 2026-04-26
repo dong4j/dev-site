@@ -110,7 +110,7 @@ sudo vim /etc/nut/upsmon.conf
 
 在末尾加上：
 
-```conf
+```bash
 # MONITOR <system> <powervalue> <username> <password> ("master"|"slave")
 #   <system>     = ups@<NAS-IP>，群晖的 UPS 命名默认就是 ups
 #   <powervalue> = 这台客户端从这个 UPS 获得几路电源，普通机器填 1
