@@ -3,7 +3,7 @@ title: "📚 Maven 必知必会"
 description: "深入介绍了Maven的核心概念、依赖管理机制和最佳实践。文章重点解析了Maven的.mvn目录配置、依赖冲突解决、Scope使用等关键知识点，并分享了项目级别的Maven配置管理经验。"
 pubDate: "2025-09-20"
 category: "zeka-stack"
-banner: "./maven-essential-guide/cover.webp"
+banner: "https://api.dong4j.site/cover/png/v7?title=%F0%9F%93%9A+Maven+%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
 tags: ["Zeka.Stack", "Javaer"]
 toc: true
 ---

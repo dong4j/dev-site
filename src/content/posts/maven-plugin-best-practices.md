@@ -1,9 +1,9 @@
 ---
 title: "🧠 自定义 Maven Plugin 的一些小心思"
-description: "分享了作者基于"90秒自动化"理念，通过自定义Maven插件解决重复构建和部署问题的实践经验，介绍了插件开发基础、四个核心插件实现和常见坑点总结。"
+description: '分享了作者基于"90秒自动化"理念，通过自定义Maven插件解决重复构建和部署问题的实践经验，介绍了插件开发基础、四个核心插件实现和常见坑点总结。'
 pubDate: "2025-09-10"
 category: "zeka-stack"
-banner: "./maven-plugin-best-practices/cover.webp"
+banner: "https://api.dong4j.site/cover/png/v7?title=%F0%9F%A7%A0+%E8%87%AA%E5%AE%9A%E4%B9%89+Maven+Plugin+%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E5%BF%83%E6%80%9D&author=%40dong4j&avatarUrl=https%3A%2F%2Fcdn.dong4j.site%2Fsource%2Fimage%2Favatar.webp&randomize=1"
 tags: ["Zeka.Stack", "Javaer"]
 toc: true
 ---
@@ -599,6 +599,4 @@ private String envJvmOptions;
 **项目地址**：[Zeka Stack](https://github.com/zeka-stack/zeka-stack) | [Arco Maven Plugin](https://github.com/zeka-stack/arco-maven-plugin)
 
 **欢迎交流**：如果你在插件开发过程中遇到问题，或者有好的自动化想法，欢迎在 GitHub 上交流讨论！
-
-
 
