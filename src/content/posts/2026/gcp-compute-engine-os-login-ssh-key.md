@@ -197,7 +197,7 @@ vim ~/.ssh/config
 
 添加以下配置：
 
-```sshconfig
+```bash
 Host gcp
     HostName <your-instance-external-ip>
     User <your-os-login-username>
