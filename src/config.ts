@@ -71,7 +71,7 @@ export const Settings = {
         // 如果您不想将构建断言（image/js/css等...）上传到任何地方，只需将其设置为false即可。请注意，在Cloudflare Pages中，这里的环境值是`string`类型。如果您想禁用评论系统，请删除`S3_ENABLE`环境变量，而不仅仅是将其设置为`false`。
         uploadAssetsToS3: !!(import.meta.env.S3_ENABLE) || !!process.env.S3_ENABLE,
         config: {
-            // 请参阅 https://github.com/syhily/astro-uploader 了解如何配置上传器。以下配置会将编译后的 `assets` 文件夹上传到 S3 或 R2。
+            // 以下配置会将编译后的 `assets` 文件夹增量上传到 S3 或 R2。
             // 可以为其设置一个单独的域名，以便使用 CDN 域名访问所有资源。
             // 例如：https://images.dong4j.com/gblog/blog/brand-logo.webp 注意，如果您想自动将所有图片/js/css 替换为 CDN 链接，可能还需要在 `astro.config.mjs` 中修改 `build.assetsPrefix`。
             paths: ['assets'],
@@ -80,6 +80,8 @@ export const Settings = {
             accessKey: (process.env.S3_ACCESS_KEY ?? import.meta.env.S3_ACCESS_KEY) as string,
             secretAccessKey: (process.env.S3_SECRET_ACCESS_KEY ?? import.meta.env.S3_SECRET_ACCESS_KEY) as string,
             root: 'blog',
+            manifestKey: 'assets/.upload-manifest.json',
+            concurrency: Number(process.env.S3_UPLOAD_CONCURRENCY ?? import.meta.env.S3_UPLOAD_CONCURRENCY ?? 8),
         },
     },
 }
