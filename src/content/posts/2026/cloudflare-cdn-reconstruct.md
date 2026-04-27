@@ -14,7 +14,7 @@ toc: true
 
 ## 前言
 
-上一篇 [使用 Cloudflare 增强公网服务安全性的实践](/posts/cloudflare-proxy/) 里，我只是拿 NAS 当例子跑了一遍 Cloudflare 的代理流程，证明"这条路是通的"。
+上一篇 [使用 Cloudflare 增强公网服务安全性的实践](/posts/2025/cloudflare-proxy/) 里，我只是拿 NAS 当例子跑了一遍 Cloudflare 的代理流程，证明"这条路是通的"。
 
 真正用了一段时间之后，我发现一个尴尬的事实：家里暴露在公网的服务不止 NAS 一个，博客、图床、私有 Git、各种管理面板加起来十来个子域名，每个都"单独配一套"的话，免费账户的规则数量根本不够用 —— **Origin Rules 免费版只有 10 条**。
 
@@ -165,6 +165,6 @@ add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Ag
 
 **参考**：
 
-- [使用 Cloudflare 增强公网服务安全性的实践](/posts/cloudflare-proxy/)
+- [使用 Cloudflare 增强公网服务安全性的实践](/posts/2025/cloudflare-proxy/)
 - [Cloudflare Origin Rules 文档](https://developers.cloudflare.com/rules/origin-rules/)
 - [Cloudflare 支持的端口列表](https://developers.cloudflare.com/fundamentals/reference/network-ports/)

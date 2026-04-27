@@ -202,6 +202,7 @@ Markdown front matter
 我以前会在文首留一个占位：
 
 ```md
+![random-pic-api](https://api.dong4j.site/pc?spm={{spm}})
 ```
 
 发文前要么手工找图，要么临时生成，再自己改引用路径。现在这段交给 skill 跑：

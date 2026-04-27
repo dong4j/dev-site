@@ -6,7 +6,7 @@ import BlogImageLightbox from '@components/blog/BlogImageLightbox.astro'
 import BlogTOC from '@components/blog/BlogTOC.astro'
 import BackTop from '@components/ui/buttons/BackTop.astro'
 import Image from '@components/ui/images/Image.astro'
-import { formatDateTime } from '@support/time'
+import { formatDate } from '@support/time'
 import { SITE, Settings } from '@/config'
 
 export async function getStaticPaths() {
@@ -93,7 +93,7 @@ const ogImage = post.data.ogImage
                                 </svg>
                             </li>
                             <li class="inline-flex items-center text-sm text-neutral-500 hover:text-neutral-600 focus:outline-none focus:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-400 dark:focus:text-neutral-400">
-                                {formatDateTime(post.data.pubDate ?? new Date())}
+                                {formatDate(post.data.pubDate ?? new Date())}
                                 <svg
                                     class="flex-shrink-0 size-5 text-neutral-500 dark:text-neutral-600 mx-2"
                                     width="16"

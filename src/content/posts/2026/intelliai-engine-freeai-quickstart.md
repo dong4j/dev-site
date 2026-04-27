@@ -85,7 +85,7 @@ toc: true
 
 **完整架构图**
 
-![zeka-stack-architecture-zh.svg](./intelliai-engine-freeai-quickstart/zeka-stack-architecture-zh.svg)
+![zeka-stack-architecture-zh.svg](./intelliai-engine-freeai-quickstart/zeka-stack-architecture-zh.webp)
 
 ---
 
