@@ -2,11 +2,12 @@
 import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro'
 import Image from '@components/ui/images/Image.astro'
 
-const { title, subTitle, btnExists, btnTitle, btnURL, img, imgAlt } = Astro.props
+const { title, subTitle, meta, btnExists, btnTitle, btnURL, img, imgAlt } = Astro.props
 
 interface Props {
     title: string
     subTitle: string
+    meta?: string
     btnExists?: boolean
     btnTitle?: string
     btnURL?: string
@@ -35,6 +36,13 @@ interface Props {
         <p class="mb-4 max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-lg">
             {subTitle}
         </p>
+        {
+            meta && (
+                <p class="mb-4 text-sm font-medium text-neutral-500 dark:text-neutral-500">
+                    {meta}
+                </p>
+            )
+        }
         {
             btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null
         }

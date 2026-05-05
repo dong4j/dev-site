@@ -10,6 +10,15 @@ import { SITE } from '@/config'
 const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
     (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )
+const categories = Object.fromEntries(
+    (await getCollection('categories')).map(category => [category.slug, category.data.title]),
+)
+const readingTimes = Object.fromEntries(
+    await Promise.all(posts.map(async (post) => {
+        const { remarkPluginFrontmatter } = await post.render()
+        return [post.id, remarkPluginFrontmatter.minutesRead]
+    })),
+)
 
 const selectedPosts: CollectionEntry<'posts'>[] = posts.filter(p => p.data.selected)
 const description = 'Here are some articles that dong4j believes are not bad, hope you enjoy them.'
@@ -43,7 +52,6 @@ const URL = Astro.url.href
         btnURL="/timeline"
     />
 
-    <BlogRecentCard blogs={posts} />
+    <BlogRecentCard blogs={posts} categories={categories} readingTimes={readingTimes} />
     <BlogSelectedArticle posts={selectedPosts} />
 </BaseLayout>
-

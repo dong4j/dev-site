@@ -2,43 +2,112 @@
 import type { CollectionEntry } from 'astro:content'
 import LeftSection from '@components/ui/sections/LeftSection.astro'
 import RightSection from '@components/ui/sections/RightSection.astro'
+import { formatDate } from '@support/time'
 
-const { blogs } = Astro.props
+const { blogs, categories, readingTimes } = Astro.props
 
 interface Props {
     blogs: CollectionEntry<'posts'>[]
+    categories: Record<string, string>
+    readingTimes: Record<string, string>
 }
 
-const posts = blogs.slice(0, 5)
+const initialVisibleCount = 5
+const pageSize = 5
 ---
 
-{
-    posts.map((b, index) => index % 2 === 0
-        ? (
-            <LeftSection
-                title={b.data.title}
-                subTitle={b.data.description}
-                btnExists={true}
-                btnTitle="Read More"
-                btnURL=`/posts/${b.slug}`
-                img={b.data.banner}
-                imgAlt={b.data.title}
-            />
-        )
-        : (
-            <RightSection
-                title={b.data.title}
-                subTitle={b.data.description}
-                btnExists={true}
-                btnTitle="Read More"
-                btnURL=`/posts/${b.slug}`
-                img={b.data.banner}
-                imgAlt={b.data.title}
-                single={!b.data.banner2}
-                imgOne={b.data.banner}
-                imgOneAlt={b.data.title}
-                imgTwo={b.data?.banner2}
-                imgTwoAlt={b.data.title}
-            />
-        ))
+<div data-recent-posts>
+    {
+        blogs.map((blog, index) => {
+            const categoryTitle = categories[blog.data.category ?? ''] ?? blog.data.category
+            const meta = [categoryTitle, blog.data.pubDate ? formatDate(blog.data.pubDate) : '', readingTimes[blog.id]]
+                .filter(Boolean)
+                .join(' ')
+
+            return (
+                <div
+                    class:list={[{ hidden: index >= initialVisibleCount }]}
+                    data-recent-post-card
+                >
+                    {
+                        index % 2 === 0
+                            ? (
+                                    <LeftSection
+                                        title={blog.data.title}
+                                        subTitle={blog.data.description}
+                                        meta={meta}
+                                        btnExists={true}
+                                        btnTitle="Read More"
+                                        btnURL={`/posts/${blog.slug}`}
+                                        img={blog.data.banner}
+                                        imgAlt={blog.data.title}
+                                    />
+                                )
+                            : (
+                                    <RightSection
+                                        title={blog.data.title}
+                                        subTitle={blog.data.description}
+                                        meta={meta}
+                                        btnExists={true}
+                                        btnTitle="Read More"
+                                        btnURL={`/posts/${blog.slug}`}
+                                        single={!blog.data.banner2}
+                                        imgOne={blog.data.banner}
+                                        imgOneAlt={blog.data.title}
+                                        imgTwo={blog.data?.banner2}
+                                        imgTwoAlt={blog.data.title}
+                                    />
+                                )
+                    }
+                </div>
+            )
+        })
+    }
+    <div class="h-1" data-recent-post-sentinel data-page-size={pageSize}></div>
+</div>
+
+<script>
+function setupRecentPosts() {
+    const root = document.querySelector<HTMLElement>('[data-recent-posts]')
+    const sentinel = root?.querySelector<HTMLElement>('[data-recent-post-sentinel]')
+    if (!root || !sentinel) {
+        return
+    }
+
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-recent-post-card]'))
+    const pageSize = Number(sentinel.dataset.pageSize ?? 5)
+    let observer: IntersectionObserver | undefined
+
+    function revealNextPage() {
+        const hiddenCards = cards.filter(card => card.classList.contains('hidden'))
+        hiddenCards.slice(0, pageSize).forEach((card) => {
+            card.classList.remove('hidden')
+        })
+
+        if (cards.every(card => !card.classList.contains('hidden'))) {
+            sentinel.remove()
+            observer?.disconnect()
+        }
+    }
+
+    if (!('IntersectionObserver' in window)) {
+        revealNextPage()
+        return
+    }
+
+    observer = new IntersectionObserver((entries) => {
+        if (entries.some(entry => entry.isIntersecting)) {
+            revealNextPage()
+        }
+    }, {
+        rootMargin: '700px 0px',
+        threshold: 0,
+    })
+
+    observer.observe(sentinel)
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupRecentPosts()
+})
+</script>
