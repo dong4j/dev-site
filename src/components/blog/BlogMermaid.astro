@@ -1,0 +1,173 @@
+<script>
+import mermaid from 'mermaid'
+
+const MERMAID_SELECTOR = 'article.prose .mermaid'
+const MERMAID_PENDING_SELECTOR = `${MERMAID_SELECTOR}:not([data-processed]):not([data-mermaid-state="rendered"])`
+let renderQueue = Promise.resolve()
+
+function resolveTheme() {
+    return document.documentElement.classList.contains('dark') ? 'dark' : 'default'
+}
+
+function initializeMermaid() {
+    mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'strict',
+        theme: resolveTheme(),
+    })
+}
+
+async function renderDiagram(diagram: HTMLElement) {
+    if (diagram.dataset.mermaidState === 'rendering' || diagram.dataset.mermaidState === 'rendered') {
+        return
+    }
+
+    diagram.dataset.mermaidState = 'rendering'
+    await mermaid.run({
+        nodes: [diagram],
+    })
+    diagram.dataset.mermaidState = 'rendered'
+}
+
+function queueRender(diagram: HTMLElement) {
+    renderQueue = renderQueue
+        .then(() => renderDiagram(diagram))
+        .catch((error) => {
+            diagram.dataset.mermaidState = 'error'
+            console.error('Failed to render Mermaid diagram:', error)
+        })
+}
+
+function observeMermaid(diagrams: HTMLElement[]) {
+    if (!('IntersectionObserver' in window)) {
+        diagrams.forEach(queueRender)
+        return
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                return
+            }
+
+            const diagram = entry.target as HTMLElement
+            observer.unobserve(diagram)
+            queueRender(diagram)
+        })
+    }, {
+        rootMargin: '600px 0px',
+        threshold: 0.01,
+    })
+
+    diagrams.forEach(diagram => observer.observe(diagram))
+}
+
+function setupMermaid() {
+    const diagrams = Array.from(document.querySelectorAll<HTMLElement>(MERMAID_PENDING_SELECTOR))
+    if (diagrams.length === 0) {
+        return
+    }
+
+    initializeMermaid()
+    diagrams.forEach((diagram) => {
+        diagram.dataset.mermaidState = 'pending'
+    })
+    observeMermaid(diagrams)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupMermaid()
+})
+</script>
+
+<style>
+    :global(article.prose pre.mermaid) {
+        position: relative;
+        overflow-x: auto;
+        border-radius: 0.375rem;
+        background: rgb(245 245 245);
+        padding: 1rem;
+        text-align: center;
+    }
+
+    :global(html.dark article.prose pre.mermaid) {
+        background: rgb(23 23 23 / 0.7);
+    }
+
+    :global(article.prose pre.mermaid[data-mermaid-state="pending"]),
+    :global(article.prose pre.mermaid[data-mermaid-state="rendering"]) {
+        display: grid;
+        min-height: 14rem;
+        place-items: center;
+        color: transparent;
+    }
+
+    :global(article.prose pre.mermaid[data-mermaid-state="pending"]::before),
+    :global(article.prose pre.mermaid[data-mermaid-state="rendering"]::before) {
+        position: absolute;
+        inset: 1rem;
+        border: 1px solid rgb(212 212 212);
+        border-radius: 0.375rem;
+        background:
+            linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent),
+            linear-gradient(rgb(212 212 212), rgb(212 212 212)),
+            linear-gradient(rgb(212 212 212), rgb(212 212 212)),
+            linear-gradient(rgb(212 212 212), rgb(212 212 212)),
+            rgb(250 250 250);
+        background-position:
+            -12rem 0,
+            50% 42%,
+            50% 52%,
+            50% 62%,
+            0 0;
+        background-size:
+            12rem 100%,
+            min(18rem, 62%) 0.75rem,
+            min(24rem, 76%) 0.75rem,
+            min(14rem, 52%) 0.75rem,
+            100% 100%;
+        background-repeat: no-repeat;
+        content: "";
+        animation: mermaid-placeholder 1.3s ease-in-out infinite;
+    }
+
+    :global(html.dark article.prose pre.mermaid[data-mermaid-state="pending"]::before),
+    :global(html.dark article.prose pre.mermaid[data-mermaid-state="rendering"]::before) {
+        border-color: rgb(64 64 64);
+        background:
+            linear-gradient(90deg, transparent, rgb(255 255 255 / 0.08), transparent),
+            linear-gradient(rgb(82 82 82), rgb(82 82 82)),
+            linear-gradient(rgb(82 82 82), rgb(82 82 82)),
+            linear-gradient(rgb(82 82 82), rgb(82 82 82)),
+            rgb(38 38 38);
+        background-position:
+            -12rem 0,
+            50% 42%,
+            50% 52%,
+            50% 62%,
+            0 0;
+        background-size:
+            12rem 100%,
+            min(18rem, 62%) 0.75rem,
+            min(24rem, 76%) 0.75rem,
+            min(14rem, 52%) 0.75rem,
+            100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    :global(article.prose pre.mermaid svg) {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @keyframes mermaid-placeholder {
+        to {
+            background-position:
+                calc(100% + 12rem) 0,
+                50% 42%,
+                50% 52%,
+                50% 62%,
+                0 0;
+        }
+    }
+</style>
