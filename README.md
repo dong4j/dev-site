@@ -58,6 +58,8 @@ For detailed help with Astro CLI commands, visit [Astro's documentation](https:/
 
 ## Cloudflare 部署与 S3/R2 增量上传
 
+Cloudflare Pages 会读取项目根目录的 `.node-version` 来选择 Node.js 版本。当前项目锁定为 `22.16.0`，避免使用 Cloudflare 旧构建镜像默认的 `18.17.1` 导致 Astro 构建失败。
+
 这个项目在 Cloudflare Pages 构建时会根据 `S3_ENABLE` 决定是否把 `dist/assets` 上传到 S3/R2，并通过 `build.assetsPrefix` 把资源地址切到 `https://assets.dong4j.dev/blog`。
 
 早期使用 `astro-uploader` 时，它虽然会跳过远端已存在的文件，但每次构建都会递归扫描 `assets`，并对每个文件执行一次远端 `stat`。博客图片变多后，即使全部都是 `exists on backend, skip`，Cloudflare 部署也会被大量远端检查拖慢。
