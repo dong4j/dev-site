@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from 'astro:content'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogComments from '@components/blog/BlogComments'
 import BlogImageLightbox from '@components/blog/BlogImageLightbox.astro'
+import BlogMermaid from '@components/blog/BlogMermaid.astro'
 import BlogTOC from '@components/blog/BlogTOC.astro'
 import BackTop from '@components/ui/buttons/BackTop.astro'
 import Image from '@components/ui/images/Image.astro'
@@ -166,6 +167,7 @@ const ogImage = post.data.ogImage
             background-color: var(--shiki-dark-bg) !important;
         }
     </style>
+    <BlogMermaid />
     <BlogImageLightbox />
     <BackTop />
 </BaseLayout>

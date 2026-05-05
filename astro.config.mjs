@@ -5,7 +5,7 @@ import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import partytown from '@astrojs/partytown'
 import { SITE } from './src/config.ts'
-import { remarkReadingTime } from './src/support/plugins.ts'
+import { remarkMermaid, remarkReadingTime } from './src/support/plugins.ts'
 import { uploadAssetsToS3 } from './src/support/uploader.ts'
 
 // 用于配置Astro项目的设置。Astro是一个用于构建静态网站的现代前端框架。下面是这个配置文件中各个部分的作用：
@@ -51,7 +51,7 @@ export default defineConfig({
         uploadAssetsToS3(),
     ],
     markdown: {
-        remarkPlugins: [remarkReadingTime],
+        remarkPlugins: [remarkReadingTime, remarkMermaid],
         shikiConfig: {
             theme: 'github-light',
             themes: {
@@ -66,8 +66,17 @@ export default defineConfig({
     },
     prefetch: true,
     output: 'static',
+    vite: {
+        resolve: {
+            alias: {
+                // Mermaid 10.2.4 的 mindmap 模块会深层导入 Cytoscape UMD 文件；
+                // Vite 依赖预构建只能接受 import 条件，因此这里转到等价的 ESM 入口。
+                'cytoscape/dist/cytoscape.umd.js': 'cytoscape/dist/cytoscape.esm.mjs',
+            },
+        },
+    },
     build: {
-        // 指定构建输出目录中Astro生成的资源（例如捆绑的JS和CSS）应存放的位置。 
+        // 指定构建输出目录中Astro生成的资源（例如捆绑的JS和CSS）应存放的位置。
         // https://docs.astro.build/en/reference/configuration-reference/#buildassets
         assets: 'assets',
         // see https://docs.astro.build/en/reference/configuration-reference/#buildassetsprefix
