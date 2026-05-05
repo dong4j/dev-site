@@ -15,7 +15,10 @@ const { headings } = Astro.props
 const formatedHeadings = headings.reduce((acc, obj) => {
     if (obj.depth === 2) {
         acc.push({ current: obj, children: [] })
-    } else if (obj.depth === 3 && acc.length > 0) {
+        return acc
+    }
+
+    if (obj.depth === 3 && acc.length > 0) {
         acc[acc.length - 1].children?.push(obj)
     }
 
@@ -23,33 +26,204 @@ const formatedHeadings = headings.reduce((acc, obj) => {
 }, [] as Headings[])
 ---
 
-<div class="fixed top-[20%] pr-4">
-    <ul class="list-none space-y-2 text-pretty text-sm text-neutral-600 dark:text-neutral-400">
+<div
+    class="blog-toc sticky top-[20vh] max-h-[70vh] overflow-y-auto pr-4"
+    data-blog-toc
+>
+    <ul class="m-0 list-none space-y-2 p-0 text-pretty text-sm text-neutral-600 dark:text-neutral-400">
         {
             formatedHeadings.map((heading: Headings) => (
-                <li>
-                    <a
-                        class="heading-path outline-none hover:text-orange-500 focus:text-orange-500"
-                        href=`#${heading.current.slug}`
-                    >
-                        {heading.current.text}
-                    </a>
+                <li class="blog-toc__section" data-toc-section={heading.current.slug}>
+                    <div class="flex items-start gap-1">
+                        {
+                            heading.children && heading.children.length > 0
+                                ? (
+                                        <button
+                                            class="blog-toc__toggle mt-0.5 inline-flex size-4 shrink-0 items-center justify-center text-neutral-500 outline-none transition hover:text-orange-500 focus:text-orange-500 dark:text-neutral-500 dark:hover:text-orange-400"
+                                            type="button"
+                                            aria-label="展开子目录"
+                                            aria-expanded="false"
+                                            data-toc-toggle={heading.current.slug}
+                                        >
+                                            <svg class="size-3 transition-transform" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </button>
+                                    )
+                                : <span class="size-4 shrink-0"></span>
+                        }
+                        <a
+                            class="heading-path blog-toc__link outline-none hover:text-orange-500 focus:text-orange-500"
+                            href=`#${heading.current.slug}`
+                            data-toc-link={heading.current.slug}
+                            data-toc-depth="2"
+                        >
+                            {heading.current.text}
+                        </a>
+                    </div>
                     {
-                        heading.children?.map((child: MarkdownHeading) => (
-                            <ol class="list-inside ps-5 mt-2">
-                                <li>
-                                    <a
-                                        class="heading-path outline-none hover:text-orange-500 focus:text-orange-500"
-                                        href=`#${child.slug}`
-                                    >
-                                        {child.text}
-                                    </a>
-                                </li>
+                        heading.children && heading.children.length > 0 && (
+                            <ol class="blog-toc__children mt-2 hidden list-none space-y-2 ps-5" data-toc-children={heading.current.slug}>
+                                {
+                                    heading.children.map((child: MarkdownHeading) => (
+                                        <li>
+                                            <a
+                                                class="heading-path blog-toc__link block outline-none hover:text-orange-500 focus:text-orange-500"
+                                                href=`#${child.slug}`
+                                                data-toc-link={child.slug}
+                                                data-toc-depth="3"
+                                                data-toc-parent={heading.current.slug}
+                                            >
+                                                {child.text}
+                                            </a>
+                                        </li>
+                                    ))
+                                }
                             </ol>
-                        ))
+                        )
                     }
                 </li>
             ))
         }
     </ul>
 </div>
+
+<script>
+function setupBlogTOC() {
+    const toc = document.querySelector<HTMLElement>('[data-blog-toc]')
+    if (!toc) {
+        return
+    }
+
+    const sections = Array.from(toc.querySelectorAll<HTMLElement>('[data-toc-section]'))
+    const links = Array.from(toc.querySelectorAll<HTMLAnchorElement>('[data-toc-link]'))
+    const toggles = Array.from(toc.querySelectorAll<HTMLButtonElement>('[data-toc-toggle]'))
+    const headings = links
+        .map(link => document.getElementById(link.dataset.tocLink ?? ''))
+        .filter((heading): heading is HTMLElement => !!heading)
+
+    let activeSlug = ''
+
+    function setSectionExpanded(section: HTMLElement, expanded: boolean) {
+        const children = section.querySelector<HTMLElement>('[data-toc-children]')
+        const toggle = section.querySelector<HTMLButtonElement>('[data-toc-toggle]')
+        if (!children || !toggle) {
+            return
+        }
+
+        children.classList.toggle('hidden', !expanded)
+        toggle.setAttribute('aria-expanded', String(expanded))
+        toggle.querySelector('svg')?.classList.toggle('rotate-90', expanded)
+    }
+
+    function getParentSlug(slug: string) {
+        const link = links.find(item => item.dataset.tocLink === slug)
+        return link?.dataset.tocParent ?? slug
+    }
+
+    function syncExpandedSections(parentSlug: string) {
+        sections.forEach((section) => {
+            const manuallyExpanded = section.dataset.tocManualExpanded === 'true'
+            const isActiveParent = section.dataset.tocSection === parentSlug
+            setSectionExpanded(section, manuallyExpanded || isActiveParent)
+        })
+    }
+
+    function syncActiveLink(slug: string) {
+        if (!slug || activeSlug === slug) {
+            return
+        }
+
+        activeSlug = slug
+        links.forEach((link) => {
+            const active = link.dataset.tocLink === slug
+            link.classList.toggle('blog-toc__link--active', active)
+            link.setAttribute('aria-current', active ? 'location' : 'false')
+        })
+
+        const parentSlug = getParentSlug(slug)
+        syncExpandedSections(parentSlug)
+        links.find(link => link.dataset.tocLink === slug)?.scrollIntoView({ block: 'nearest' })
+    }
+
+    toggles.forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+            const section = toggle.closest<HTMLElement>('[data-toc-section]')
+            if (!section) {
+                return
+            }
+
+            const nextExpanded = section.dataset.tocManualExpanded !== 'true'
+            section.dataset.tocManualExpanded = String(nextExpanded)
+            const parentSlug = activeSlug ? getParentSlug(activeSlug) : ''
+            syncExpandedSections(parentSlug)
+        })
+    })
+
+    if (!('IntersectionObserver' in window) || headings.length === 0) {
+        syncActiveLink(headings[0]?.id ?? '')
+        return
+    }
+
+    const visibleHeadings = new Map<string, number>()
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                visibleHeadings.set(entry.target.id, entry.boundingClientRect.top)
+                return
+            }
+
+            visibleHeadings.delete(entry.target.id)
+        })
+
+        const visibleSlug = Array.from(visibleHeadings.entries())
+            .sort(([, topA], [, topB]) => topA - topB)[0]?.[0]
+
+        if (visibleSlug) {
+            syncActiveLink(visibleSlug)
+            return
+        }
+
+        const passedHeading = headings
+            .filter(heading => heading.getBoundingClientRect().top <= 120)
+            .pop()
+        syncActiveLink(passedHeading?.id ?? headings[0]?.id ?? '')
+    }, {
+        rootMargin: '-15% 0px -70% 0px',
+        threshold: 0,
+    })
+
+    headings.forEach(heading => observer.observe(heading))
+    syncActiveLink(location.hash.slice(1) || headings[0]?.id || '')
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupBlogTOC()
+})
+</script>
+
+<style>
+    .blog-toc {
+        scrollbar-width: thin;
+    }
+
+    .blog-toc__link {
+        display: block;
+        line-height: 1.45;
+    }
+
+    .blog-toc__link--active {
+        color: rgb(250 90 21);
+        font-weight: 600;
+    }
+
+    :global(html.dark) .blog-toc__link--active {
+        color: rgb(251 113 59);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .blog-toc__toggle svg {
+            transition: none;
+        }
+    }
+</style>

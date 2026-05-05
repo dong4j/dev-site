@@ -9,20 +9,20 @@ import { SITE } from '@/config'
 const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
     (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )
-const description = `All Posts, Currently written ${posts.length} articles. Let's keep up the good work!`
+const description = `全部文章，目前已经写了 ${posts.length} 篇，继续保持。`
 const URL = Astro.url.href
 ---
 
 <BaseLayout
-    title="Timeline"
+    title="时间线"
     description={description}
     structuredData={{
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        'inLanguage': 'en-US',
+        'inLanguage': 'zh-CN',
         '@id': URL,
         'url': URL,
-        'name': `Timeline - ${SITE.title}`,
+        'name': `时间线 - ${SITE.title}`,
         'description': description,
         'isPartOf': {
             '@type': 'WebSite',
@@ -34,9 +34,9 @@ const URL = Astro.url.href
 >
     <section class="mx-auto max-w-[85rem] mt-10 lg:mt-10 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div class="max-w-3xl mx-auto mb-10 lg:mb-14">
-            <h2 class="text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">Timeline</h2>
+            <h2 class="text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">时间线</h2>
             <p class="mt-4 text-lg group text-pretty text-neutral-600 dark:text-neutral-400">
-                So far, a total of <span class="group-hover:text-yellow-500 group-hover:dark:text-yellow-400">{posts.length}</span> articles have been written. Keep up the good work! 💪
+                到目前为止，我已经写了 <span class="group-hover:text-yellow-500 group-hover:dark:text-yellow-400">{posts.length}</span> 篇文章，继续保持。
             </p>
         </div>
         {posts.map(p => <BlogTimeline blog={p} />)}
