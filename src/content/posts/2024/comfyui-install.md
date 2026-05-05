@@ -10,8 +10,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./comfyui-install/cover.webp)
-
 ## 简介
 
 最近 [ComfyUI Desktop](https://github.com/Comfy-Org/desktop) 发布了 Bate 版本，但是安装的时候遇到了一些问题，记录一下。

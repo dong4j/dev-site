@@ -11,8 +11,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./hexo-busuanzi/cover.webp)
-
 [自建 Hitokoto 服务](/posts/hexo-hitokoto/)
 [Hexo 添加 RSS 订阅功能](/posts/hexo-rss/)
 [Hexo 自定义加载动画](/posts/hexo-load/)

@@ -11,8 +11,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./generate-blog-category/cover.webp)
-
 在上一篇 [AI助力博客创作：自动生成摘要与标签的实战指南](/posts/generate-blog-tags-using-ai/) 中使用 AI 自动生成文章摘要和 Tags, 这次我们依旧利用 AI 来帮我们为文章进行智能分类.
 
 ## 理解分类和标签

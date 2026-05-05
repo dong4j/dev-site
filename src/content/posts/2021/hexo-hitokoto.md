@@ -11,8 +11,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./hexo-hitokoto/cover.webp)
-
 ## 前言
 
 最近使用的 Hexo 主题 [hexo-theme-anzhiyu](https://github.com/anzhiyu-c/hexo-theme-anzhiyu) 默认的随机一言接口被限流了, 根据官方文档在家里的服务器上搭建了一个, 目前用于我的博客.

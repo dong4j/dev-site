@@ -12,8 +12,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./hexo-friends/cover.webp)
-
 安知鱼主题自带朋友圈功能, 不过需要自行部署后端, 下面说说我的部署过程.
 
 ## 创建朋友圈页面

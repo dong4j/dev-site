@@ -11,8 +11,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./non-standard-ai-integration/cover.webp)
-
 ## 📋 背景与挑战
 
 ### 业务背景

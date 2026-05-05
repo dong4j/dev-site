@@ -11,8 +11,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./npx-card-dev/cover.webp)
-
 ## 简介
 
 最近在使用 Node.js 写一个数字名片的小项目, 直接使用 `npx dong4j` 就可以使用, 大概是这样的:

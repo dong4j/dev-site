@@ -11,8 +11,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./git-clean/cover.webp)
-
 ## 背景
 
 最近在进行博客迁移, 以前吃过图床的亏, 所以这次将图片全部保留在本地, 并使用 GitHub 和 Gitee 来作备份, 但是因为大量的图片提交导致出发了 Gitee 的仓库体积限制, 在最近几次提交时, 出现了如下错误:

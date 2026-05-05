@@ -10,8 +10,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./hexo-rss/cover.webp)
-
 Hexo 博客添加 RSS 订阅功能 插件 GitHub [https://github.com/hexojs/hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) 安装 hexo......
 
 这篇文章介绍了如何在 Hexo 博客中添加 RSS 订阅功能。需要使用时光插件，并提供了 GitHub 地址。在配置 RSS 时，可以选择原子或 RSS2 的类型，设置文件路径，决定展示文章的数量，还可以选择包含文章的全部内容或摘要。同时，也可以自定义订阅图标和订阅内容的顺序。在部署后，直接在根目录中访问配置的文件即可使用 RSS 订阅功能。

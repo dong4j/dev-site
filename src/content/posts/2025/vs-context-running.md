@@ -11,8 +11,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./vs-context-running/cover.webp)
-
 ## 引言
 
 VSCode 插件开发可能对初学者来说有些陌生。本文将从最简单的 Hello World 插件开始，一步步带你实现一个实用的图片处理工具。我们会先开发一个最基础的插件，然后逐步添加功能，最终实现一个可以帮助博主快速处理图片的工具。

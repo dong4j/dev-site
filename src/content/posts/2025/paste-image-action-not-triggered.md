@@ -11,8 +11,6 @@ tags:
 toc: true
 ---
 
-![cover.webp](./paste-image-action-not-triggered/cover.webp)
-
 ## 前言
 
 在开发 Markdown Image Kit 插件时，遇到了一个棘手的问题：在 Markdown 文件中粘贴图片时，自定义的粘贴处理逻辑完全不被触发，直接走了 IDEA 默认或
