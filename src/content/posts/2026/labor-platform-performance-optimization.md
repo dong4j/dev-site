@@ -117,7 +117,7 @@ toc: true
 
 #### 数据量
 
-![数据量](./labor-platform-performance-optimization/%E6%95%B0%E6%8D%AE%E9%87%8F.png)
+![数据量](./labor-platform-performance-optimization/20260506152043_uQTZ75CA.webp)
 
 1. employee: 214.17 W+
 2. user: 55.19 W+
@@ -1112,7 +1112,7 @@ seata:
 
 比如下面的代码:
 
-![IntelliJ IDEA 2025-07-11 10.02.03](./labor-platform-performance-optimization/IntelliJ%20IDEA%202025-07-11%2010.02.03.png)
+![IntelliJ IDEA 2025-07-11 10.02.03](./labor-platform-performance-optimization/20260506155111_0KmgvSZA.webp)
 
 在某短信发送方法中执行了 2 个远程调用：
 ![20260506152043_uQTZ75CJ.webp](./labor-platform-performance-optimization/20260506152043_uQTZ75CJ.webp)
