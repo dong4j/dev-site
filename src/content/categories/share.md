@@ -1,4 +1,4 @@
 ---
-title: '高能分享'
-description: '高能分享'
+title: '🎉 高能分享'
+description: '经验、观点、事故复盘和一些值得单独拿出来讲的内容'
 ---

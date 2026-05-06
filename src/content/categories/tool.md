@@ -1,4 +1,4 @@
 ---
-title: '我的工具箱 🪜'
-description: '停止折腾就老了吧'
+title: '🛠️ 开发工具与插件'
+description: 'IDEA、VSCode、命令行、小插件和日常开发工具'
 ---

@@ -1,4 +1,4 @@
 ---
-title: '教程 💃'
-description: '教程，教程，教程'
+title: '📚 教程'
+description: '偏教程向的内容，尽量把一个问题从背景到落地讲清楚'
 ---

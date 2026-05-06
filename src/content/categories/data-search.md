@@ -1,4 +1,4 @@
 ---
-title: '数据与搜索'
-description: '数据与搜索'
+title: '📊 数据与搜索'
+description: '数据库、搜索、向量检索、数据建模和数据处理'
 ---

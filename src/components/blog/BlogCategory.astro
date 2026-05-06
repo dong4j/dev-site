@@ -1,6 +1,6 @@
 ---
 
-const { slug, title, description, count, publishDate } = Astro.props
+const { slug, title, description, count, publishDate, size = 'md', placement = '' } = Astro.props
 
 interface Props {
     slug: string
@@ -8,25 +8,63 @@ interface Props {
     description: string
     count: number
     publishDate: string
+    size?: 'sm' | 'md' | 'lg' | 'xl'
+    placement?: string
+}
+
+const sizeClasses = {
+    sm: 'row-span-2 p-4',
+    md: 'row-span-2 p-4',
+    lg: 'row-span-2 p-5',
+    xl: 'row-span-4 p-6',
+}
+
+const titleClasses = {
+    sm: 'text-base',
+    md: 'text-2xl',
+    lg: 'text-3xl',
+    xl: 'text-4xl lg:text-5xl',
+}
+
+const descriptionClasses = {
+    sm: 'line-clamp-2 text-xs leading-5',
+    md: 'line-clamp-2 leading-7',
+    lg: 'line-clamp-2 text-lg leading-8',
+    xl: 'line-clamp-5 text-lg leading-8',
 }
 ---
 
-<a href=`/categories/${slug}` class="flex flex-col justify-between size-full bg-neutral-100 shadow-lg rounded-lg p-5 dark:bg-neutral-900/30 group">
-    <div class="flex justify-between items-center mb-3">
-        <div class="flex justify-center gap-x-4 items-center">
-            <div class="flex-shrink-0">
-                <h3 class="text-lg font-semibold tracking-tight text-neutral-600 group-hover:text-orange-400 dark:text-neutral-300 dark:group-hover:text-orange-300">
+<a
+    href=`/categories/${slug}`
+    class:list={[
+        'group flex size-full min-h-0 flex-col overflow-hidden rounded-lg bg-neutral-100 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-900/30',
+        sizeClasses[size],
+        placement,
+    ]}
+>
+    <div class="mb-3 min-w-0">
+        <div class="flex min-w-0 items-center">
+            <div class="min-w-0">
+                <h3 class:list={[
+                    'line-clamp-2 break-words font-semibold tracking-tight text-neutral-600 group-hover:text-orange-400 dark:text-neutral-300 dark:group-hover:text-orange-300',
+                    titleClasses[size],
+                ]}
+                >
                     {title}
                 </h3>
             </div>
         </div>
     </div>
 
-    <p class="block text-neutral-500 min-h-[60px] group-hover:text-neutral-600 dark:text-neutral-500 dark:group-hover:text-neutral-400">
+    <p class:list={[
+        'block min-w-0 break-words text-neutral-500 group-hover:text-neutral-600 dark:text-neutral-500 dark:group-hover:text-neutral-400',
+        descriptionClasses[size],
+    ]}
+    >
         {description}
     </p>
 
-    <div class="flex mt-2 mb-0 gap-x-5">
+    <div class="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-5">
         <span class="text-xs inline-flex items-center rounded me-2 text-neutral-500 group-hover:text-neutral-600 dark:text-neutral-500 dark:group-hover:text-neutral-400">
             <svg
                 class="w-3 h-3 me-1.5"

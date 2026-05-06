@@ -1,4 +1,4 @@
 ---
-title: 'Go'
-description: 'Go 语言的词法分析与语法分析及折腾下 Go 编译原理吗'
+title: '🐹 Go'
+description: 'Go 语言、服务开发和编译原理相关记录'
 ---
