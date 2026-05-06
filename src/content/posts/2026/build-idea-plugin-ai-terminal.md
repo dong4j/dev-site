@@ -26,7 +26,7 @@ toc: true
 
 ## 功能一览
 
-![111](./build-idea-plugin-ai-terminal/111.gif)
+![111.gif](./build-idea-plugin-ai-terminal/111.gif)
 
 | 功能 | 入口 | 说明 |
 |------|------|------|
