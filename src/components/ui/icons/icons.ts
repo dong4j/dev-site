@@ -103,6 +103,25 @@ export const Icons = {
         strokeLinejoin: 'round',
         stroke: 'currentColor',
     },
+    arrowDown: {
+        paths: [
+            {
+                d: 'm5 12 7 7 7-7',
+            },
+            {
+                d: 'M12 5v14',
+            },
+        ],
+        class: 'h-5 w-5 flex-shrink-0 text-orange-400 dark:text-orange-300',
+        width: 24,
+        height: 24,
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        strokeWidth: '2',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+        stroke: 'currentColor',
+    },
     checkCircle: {
         paths: [
             {

@@ -1,0 +1,47 @@
+---
+import Icon from '@components/ui/icons/icon.astro'
+---
+
+<button
+    type="button"
+    aria-label="Back to bottom"
+    data-back-bottom
+    class="group fixed bottom-20 right-5 z-50 flex h-11 w-11 translate-y-2 items-center justify-center rounded-full border border-neutral-200 bg-neutral-100/90 text-neutral-600 opacity-0 shadow-lg shadow-neutral-900/10 outline-none ring-zinc-500 backdrop-blur-md transition duration-300 pointer-events-none hover:border-orange-300 hover:bg-neutral-200 hover:text-orange-500 focus-visible:ring dark:border-neutral-700/70 dark:bg-neutral-800/90 dark:text-neutral-300 dark:shadow-black/30 dark:ring-zinc-200 dark:hover:border-orange-300/70 dark:hover:bg-neutral-700 dark:hover:text-orange-300 sm:bottom-20 sm:right-6"
+>
+    <Icon name="arrowDown" />
+</button>
+
+<script is:inline>
+function setupBackBottom() {
+    const button = document.querySelector('[data-back-bottom]')
+    if (!button || button.dataset.backBottomReady === 'true') {
+        return
+    }
+
+    button.dataset.backBottomReady = 'true'
+
+    const visibleClasses = ['translate-y-0', 'opacity-100', 'pointer-events-auto']
+    const hiddenClasses = ['translate-y-2', 'opacity-0', 'pointer-events-none']
+
+    function syncVisibility() {
+        const remainingScroll = document.documentElement.scrollHeight - window.innerHeight - window.scrollY
+        const isVisible = remainingScroll > 360
+        button.classList.toggle(visibleClasses[0], isVisible)
+        button.classList.toggle(visibleClasses[1], isVisible)
+        button.classList.toggle(visibleClasses[2], isVisible)
+        button.classList.toggle(hiddenClasses[0], !isVisible)
+        button.classList.toggle(hiddenClasses[1], !isVisible)
+        button.classList.toggle(hiddenClasses[2], !isVisible)
+    }
+
+    button.addEventListener('click', () => {
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
+    })
+    window.addEventListener('scroll', syncVisibility, { passive: true })
+    window.addEventListener('resize', syncVisibility, { passive: true })
+    syncVisibility()
+}
+
+setupBackBottom()
+document.addEventListener('astro:page-load', setupBackBottom)
+</script>

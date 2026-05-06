@@ -5,7 +5,10 @@ import Image from '@components/ui/images/Image.astro'
 const {
     title,
     subTitle,
-    meta,
+    categoryTitle,
+    categoryURL,
+    date,
+    readingTime,
     btnExists,
     btnTitle,
     btnURL,
@@ -19,7 +22,10 @@ const {
 interface Props {
     title: string
     subTitle: string
-    meta?: string
+    categoryTitle?: string
+    categoryURL?: string
+    date?: string
+    readingTime?: string
     btnExists?: boolean
     btnTitle?: string
     btnURL?: string
@@ -40,9 +46,22 @@ interface Props {
             {subTitle}
         </p>
         {
-            meta && (
-                <p class="mb-4 text-sm font-medium text-neutral-500 dark:text-neutral-500">
-                    {meta}
+            (categoryTitle || date || readingTime) && (
+                <p class="mb-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-neutral-500 dark:text-neutral-500">
+                    {
+                        categoryTitle && categoryURL
+                            ? (
+                                    <a
+                                        class="text-orange-400 outline-none hover:text-orange-500 focus:text-orange-500"
+                                        href={categoryURL}
+                                    >
+                                        {categoryTitle}
+                                    </a>
+                                )
+                            : categoryTitle
+                    }
+                    {date && <span>{date}</span>}
+                    {readingTime && <span>{readingTime}</span>}
                 </p>
             )
         }

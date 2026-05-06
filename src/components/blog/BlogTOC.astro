@@ -63,7 +63,7 @@ const formatedHeadings = headings.reduce((acc, obj) => {
                     </div>
                     {
                         heading.children && heading.children.length > 0 && (
-                            <ol class="blog-toc__children mt-2 hidden list-none space-y-2 ps-5" data-toc-children={heading.current.slug}>
+                            <ol class="blog-toc__children ms-5 mt-2 hidden list-none space-y-2 border-s border-neutral-300 ps-4 dark:border-neutral-700" data-toc-children={heading.current.slug}>
                                 {
                                     heading.children.map((child: MarkdownHeading) => (
                                         <li>
@@ -160,41 +160,40 @@ function setupBlogTOC() {
         })
     })
 
-    if (!('IntersectionObserver' in window) || headings.length === 0) {
+    if (headings.length === 0) {
         syncActiveLink(headings[0]?.id ?? '')
         return
     }
 
-    const visibleHeadings = new Map<string, number>()
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                visibleHeadings.set(entry.target.id, entry.boundingClientRect.top)
-                return
-            }
+    let ticking = false
+    function syncActiveHeading() {
+        ticking = false
+        const anchorLine = Math.round(window.innerHeight * 0.28)
+        const activeHeading = headings
+            .filter(heading => heading.getBoundingClientRect().top <= anchorLine)
+            .pop()
 
-            visibleHeadings.delete(entry.target.id)
-        })
-
-        const visibleSlug = Array.from(visibleHeadings.entries())
-            .sort(([, topA], [, topB]) => topA - topB)[0]?.[0]
-
-        if (visibleSlug) {
-            syncActiveLink(visibleSlug)
+        if (activeHeading) {
+            syncActiveLink(activeHeading.id)
             return
         }
 
-        const passedHeading = headings
-            .filter(heading => heading.getBoundingClientRect().top <= 120)
-            .pop()
-        syncActiveLink(passedHeading?.id ?? headings[0]?.id ?? '')
-    }, {
-        rootMargin: '-15% 0px -70% 0px',
-        threshold: 0,
-    })
+        syncActiveLink(headings[0]?.id ?? '')
+    }
 
-    headings.forEach(heading => observer.observe(heading))
+    function requestActiveHeadingSync() {
+        if (ticking) {
+            return
+        }
+
+        ticking = true
+        requestAnimationFrame(syncActiveHeading)
+    }
+
     syncActiveLink(location.hash.slice(1) || headings[0]?.id || '')
+    window.addEventListener('scroll', requestActiveHeadingSync, { passive: true })
+    window.addEventListener('resize', requestActiveHeadingSync, { passive: true })
+    requestActiveHeadingSync()
 }
 
 document.addEventListener('DOMContentLoaded', () => {

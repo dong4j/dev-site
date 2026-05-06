@@ -5,6 +5,7 @@ import BlogComments from '@components/blog/BlogComments'
 import BlogImageLightbox from '@components/blog/BlogImageLightbox.astro'
 import BlogMermaid from '@components/blog/BlogMermaid.astro'
 import BlogTOC from '@components/blog/BlogTOC.astro'
+import BackBottom from '@components/ui/buttons/BackBottom.astro'
 import BackTop from '@components/ui/buttons/BackTop.astro'
 import Image from '@components/ui/images/Image.astro'
 import { formatDate } from '@support/time'
@@ -169,5 +170,6 @@ const ogImage = post.data.ogImage
     </style>
     <BlogMermaid />
     <BlogImageLightbox />
+    <BackBottom />
     <BackTop />
 </BaseLayout>

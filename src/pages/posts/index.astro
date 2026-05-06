@@ -4,6 +4,8 @@ import type { CollectionEntry } from 'astro:content'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogRecentCard from '@components/blog/BlogRecentCard.astro'
 import BlogSelectedArticle from '@components/blog/BlogSelectedArticle.astro'
+import BackBottom from '@components/ui/buttons/BackBottom.astro'
+import BackTop from '@components/ui/buttons/BackTop.astro'
 import MainSection from '@components/ui/sections/MainSection.astro'
 import { SITE } from '@/config'
 
@@ -54,4 +56,6 @@ const URL = Astro.url.href
 
     <BlogRecentCard blogs={posts} categories={categories} readingTimes={readingTimes} />
     <BlogSelectedArticle posts={selectedPosts} />
+    <BackBottom />
+    <BackTop />
 </BaseLayout>

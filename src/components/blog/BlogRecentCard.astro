@@ -20,9 +20,9 @@ const pageSize = 5
     {
         blogs.map((blog, index) => {
             const categoryTitle = categories[blog.data.category ?? ''] ?? blog.data.category
-            const meta = [categoryTitle, blog.data.pubDate ? formatDate(blog.data.pubDate) : '', readingTimes[blog.id]]
-                .filter(Boolean)
-                .join(' ')
+            const categoryURL = blog.data.category ? `/categories/${blog.data.category}` : undefined
+            const date = blog.data.pubDate ? formatDate(blog.data.pubDate) : ''
+            const readingTime = readingTimes[blog.id]
 
             return (
                 <div
@@ -35,7 +35,10 @@ const pageSize = 5
                                     <LeftSection
                                         title={blog.data.title}
                                         subTitle={blog.data.description}
-                                        meta={meta}
+                                        categoryTitle={categoryTitle}
+                                        categoryURL={categoryURL}
+                                        date={date}
+                                        readingTime={readingTime}
                                         btnExists={true}
                                         btnTitle="Read More"
                                         btnURL={`/posts/${blog.slug}`}
@@ -47,7 +50,10 @@ const pageSize = 5
                                     <RightSection
                                         title={blog.data.title}
                                         subTitle={blog.data.description}
-                                        meta={meta}
+                                        categoryTitle={categoryTitle}
+                                        categoryURL={categoryURL}
+                                        date={date}
+                                        readingTime={readingTime}
                                         btnExists={true}
                                         btnTitle="Read More"
                                         btnURL={`/posts/${blog.slug}`}
