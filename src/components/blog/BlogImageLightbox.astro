@@ -1,5 +1,7 @@
 <script is:inline>
     const LIGHTBOX_ID = 'blog-image-lightbox'
+    const CLOSE_ANIMATION_DURATION = 520
+    const SCROLL_CLOSE_THRESHOLD = 80
 
     function ensureLightbox() {
         let root = document.getElementById(LIGHTBOX_ID)
@@ -17,10 +19,64 @@
         `
         document.body.appendChild(root)
 
-        const close = () => {
+        let closeTimer = 0
+        let scrollCloseDistance = 0
+        let scrollCloseDirection = 0
+        let touchStartY = 0
+
+        const resetCloseState = () => {
+            window.clearTimeout(closeTimer)
+            scrollCloseDistance = 0
+            scrollCloseDirection = 0
+            root.classList.remove('is-closing', 'is-closing-up', 'is-closing-down')
+        }
+
+        const finishClose = () => {
+            resetCloseState()
             root.classList.remove('is-open')
             root.setAttribute('aria-hidden', 'true')
             document.body.classList.remove('blog-image-lightbox-open')
+        }
+
+        const close = (direction = 'none') => {
+            if (!root.classList.contains('is-open')) {
+                return
+            }
+
+            if (direction === 'none') {
+                finishClose()
+                return
+            }
+
+            resetCloseState()
+            root.classList.add(
+                'is-closing',
+                direction === 'up' ? 'is-closing-up' : 'is-closing-down',
+            )
+            root.setAttribute('aria-hidden', 'true')
+            document.body.classList.remove('blog-image-lightbox-open')
+            // 滚动关闭需要先保留 DOM 展示状态，让图片按滚动方向完成缩小退出动画。
+            closeTimer = window.setTimeout(finishClose, CLOSE_ANIMATION_DURATION)
+        }
+
+        const closeByScroll = (deltaY) => {
+            if (root.classList.contains('is-closing') || deltaY === 0) {
+                return
+            }
+
+            const direction = Math.sign(deltaY)
+            if (direction !== scrollCloseDirection) {
+                scrollCloseDistance = 0
+                scrollCloseDirection = direction
+            }
+
+            // 滚轮和触控板会产生很多很小的 delta，累计到明确滚动距离后再关闭，避免误触。
+            scrollCloseDistance += Math.abs(deltaY)
+            if (scrollCloseDistance < SCROLL_CLOSE_THRESHOLD) {
+                return
+            }
+
+            close(direction > 0 ? 'up' : 'down')
         }
 
         root.addEventListener('click', (event) => {
@@ -39,7 +95,34 @@
             }
         })
 
+        root.addEventListener('wheel', (event) => {
+            if (!root.classList.contains('is-open')) {
+                return
+            }
+
+            event.preventDefault()
+            closeByScroll(event.deltaY)
+        }, { passive: false })
+
+        root.addEventListener('touchstart', (event) => {
+            if (!root.classList.contains('is-open') || event.touches.length !== 1) {
+                return
+            }
+
+            touchStartY = event.touches[0].clientY
+        }, { passive: true })
+
+        root.addEventListener('touchmove', (event) => {
+            if (!root.classList.contains('is-open') || event.touches.length !== 1) {
+                return
+            }
+
+            event.preventDefault()
+            closeByScroll(touchStartY - event.touches[0].clientY)
+        }, { passive: false })
+
         root.openImage = (src, alt) => {
+            resetCloseState()
             const image = root.querySelector('.blog-image-lightbox__image')
             image.src = src
             image.alt = alt || ''
@@ -83,10 +166,21 @@
         justify-content: center;
         padding: 24px;
         background: rgb(0 0 0 / 82%);
+        opacity: 0;
+        transition: opacity 360ms ease;
+    }
+
+    .blog-image-lightbox.is-open,
+    .blog-image-lightbox.is-closing {
+        display: flex;
     }
 
     .blog-image-lightbox.is-open {
-        display: flex;
+        opacity: 1;
+    }
+
+    .blog-image-lightbox.is-closing {
+        opacity: 0;
     }
 
     .blog-image-lightbox__image {
@@ -96,6 +190,24 @@
         border-radius: 6px;
         box-shadow: 0 24px 80px rgb(0 0 0 / 45%);
         cursor: zoom-out;
+        transform: translateY(0) scale(1);
+        transform-origin: center;
+        transition:
+            transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 420ms ease;
+        will-change: transform, opacity;
+    }
+
+    .blog-image-lightbox.is-closing .blog-image-lightbox__image {
+        opacity: 0;
+    }
+
+    .blog-image-lightbox.is-closing-up .blog-image-lightbox__image {
+        transform: translateY(-22vh) scale(0.72);
+    }
+
+    .blog-image-lightbox.is-closing-down .blog-image-lightbox__image {
+        transform: translateY(22vh) scale(0.72);
     }
 
     .blog-image-lightbox__close {
