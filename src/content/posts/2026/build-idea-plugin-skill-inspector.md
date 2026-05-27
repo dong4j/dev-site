@@ -3,7 +3,7 @@ title: "打造 Skill Inspector：一款 AI Agent Skill 的 IDE Linter 插件"
 description: "为 AI Agent Skill 打造的 IDE Linter 插件，内置 30+ 检查规则、Quick Fix 和可扩展平台设计。"
 pubDate: "2026-05-26"
 category: "tool"
-banner: "./cover.webp"
+banner: "./build-idea-plugin-skill-inspector/cover.webp"
 tags:
   - "IntelliJ IDEA"
   - "开发工具"
@@ -12,8 +12,6 @@ tags:
   - "经验总结"
 toc: true
 ---
-
-![cover](./cover.webp)
 
 ## 翻车现场
 
