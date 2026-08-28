@@ -3,7 +3,7 @@ title: "我的升降桌改造：破解原厂面板，接入多种控制方式"
 description: "拆原厂升降桌面板、抓 I²C 协议，用 ESP32-S3 做成 Desk Gateway，接上 Web、键盘、旋钮、手表和小智，顺便补上童锁。"
 pubDate: "2026-08-18"
 category: "homelab"
-banner: "./intelligent-transformation-of-lifting-table/cover.webp"
+banner: "./intelligent-transformation-of-lifting-table/20260824210827_tiQTrTje.webp"
 tags:
   - "Homelab"
   - "架构设计"
@@ -11,8 +11,6 @@ tags:
   - "经验总结"
 toc: true
 ---
-
-![20260824210827_tiQTrTje.webp](./intelligent-transformation-of-lifting-table/20260824210827_tiQTrTje.webp)
 
 > 首发于 少数派: [AI 助力改造非智能升降桌：智能升降、语音控制、多端联动……](https://sspai.com/post/113563)
 
